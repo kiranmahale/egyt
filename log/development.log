@@ -1,0 +1,1262 @@
+  [1m[35m (163.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (150.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateLinks (20170126164912)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "links" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "link_text" varchar, "ranking" varchar, "videoid" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170126164912"]]
+  [1m[35m (158.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", 2017-01-26 16:50:35 UTC], ["updated_at", 2017-01-26 16:50:35 UTC]]
+  [1m[35m (140.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Started GET "/links/new" for 127.0.0.1 at 2017-01-26 22:20:58 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by LinksController#new as HTML
+  Rendering links/new.html.erb within layouts/application
+  Rendered links/_form.html.erb (34.4ms)
+  Rendered links/new.html.erb within layouts/application (54.7ms)
+Completed 200 OK in 1076ms (Views: 1036.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-01-26 22:21:04 +0530
+Processing by Rails::WelcomeController#index as HTML
+  Parameters: {"internal"=>true}
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/railties-5.0.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/railties-5.0.1/lib/rails/templates/rails/welcome/index.html.erb (3.9ms)
+Completed 200 OK in 8ms (Views: 6.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-01-26 22:21:42 +0530
+Processing by LinksController#index as HTML
+  Rendering links/index.html.erb within layouts/application
+  [1m[36mLink Load (0.5ms)[0m  [1m[34mSELECT "links".* FROM "links"[0m
+  Rendered links/index.html.erb within layouts/application (6.6ms)
+Completed 200 OK in 84ms (Views: 74.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-01-26 22:23:53 +0530
+Processing by LinksController#index as HTML
+  Rendering links/index.html.erb within layouts/application
+  [1m[36mLink Load (1.5ms)[0m  [1m[34mSELECT "links".* FROM "links"[0m
+  Rendered links/index.html.erb within layouts/application (6.1ms)
+Completed 200 OK in 47ms (Views: 38.1ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/links/new" for 127.0.0.1 at 2017-01-26 22:23:56 +0530
+Processing by LinksController#new as HTML
+  Rendering links/new.html.erb within layouts/application
+  Rendered links/_form.html.erb (5.0ms)
+  Rendered links/new.html.erb within layouts/application (7.6ms)
+Completed 200 OK in 52ms (Views: 39.1ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/links" for 127.0.0.1 at 2017-01-26 22:25:36 +0530
+Processing by LinksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"evD9uuMAKO6gqFlyPaseykxhJ9YVamt6/bOhQ/L6jAzXgShCn6gD5CbKEZAh6MSpvn4IPRpnFIKhqJfT0ZSQmQ==", "link"=>{"link_text"=>"https://www.youtube.com/watch?v=gO4ZIgHOR50", "ranking"=>"", "videoid"=>""}, "commit"=>"Create Link"}
+  [1m[35m (0.4ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mLink Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "links" WHERE LOWER("links"."link_text") = LOWER(?) LIMIT ?[0m  [["link_text", "https://www.youtube.com/watch?v=gO4ZIgHOR50"], ["LIMIT", 1]]
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "links" ("link_text", "ranking", "videoid", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["link_text", "https://www.youtube.com/watch?v=gO4ZIgHOR50"], ["ranking", ""], ["videoid", ""], ["created_at", 2017-01-26 16:55:36 UTC], ["updated_at", 2017-01-26 16:55:36 UTC]]
+  [1m[35m (256.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/links/1
+Completed 302 Found in 419ms (ActiveRecord: 258.4ms)
+
+
+Started GET "/links/1" for 127.0.0.1 at 2017-01-26 22:25:37 +0530
+Processing by LinksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mLink Load (0.3ms)[0m  [1m[34mSELECT  "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering links/show.html.erb within layouts/application
+  Rendered links/show.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 34ms (Views: 29.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-01-26 23:01:22 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  
+ActionController::RoutingError (undefined method `after_create' for LinksController:Class
+Did you mean?  after_filter):
+  
+app/controllers/links_controller.rb:3:in `<class:LinksController>'
+app/controllers/links_controller.rb:1:in `<top (required)>'
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.5ms)
+  Rendered collection of /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [9 times] (37.5ms)
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (16.2ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (25.1ms)
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (133.5ms)
+Started GET "/" for 127.0.0.1 at 2017-01-26 23:01:37 +0530
+Processing by LinksController#index as HTML
+  Rendering links/index.html.erb within layouts/application
+  [1m[36mLink Load (0.8ms)[0m  [1m[34mSELECT "links".* FROM "links"[0m
+  Rendered links/index.html.erb within layouts/application (31.3ms)
+Completed 200 OK in 468ms (Views: 451.7ms | ActiveRecord: 6.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-01-26 23:10:24 +0530
+Processing by LinksController#index as HTML
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms)
+
+
+  
+URI::InvalidURIError (bad URI(is not URI?): https://www.googleapis.com/youtube/v3/videos?part=id%2C+snippet&id=4Y4YSpF6d6w&key=#{Rails.application.secrets.api_key}):
+  
+app/controllers/links_controller.rb:80:in `get_video'
+app/controllers/links_controller.rb:10:in `index'
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.0ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (31.5ms)
+Started GET "/" for 127.0.0.1 at 2017-01-26 23:11:25 +0530
+Processing by LinksController#index as HTML
+Completed 500 Internal Server Error in 682ms (ActiveRecord: 0.0ms)
+
+
+  
+EOFError (end of file reached):
+  
+
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (1.3ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (30.7ms)
+Started GET "/" for 127.0.0.1 at 2017-01-26 23:14:58 +0530
+Processing by LinksController#index as HTML
+Completed 500 Internal Server Error in 583ms (ActiveRecord: 0.0ms)
+
+
+  
+EOFError (end of file reached):
+  
+
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (1.2ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (30.5ms)
+Started GET "/" for 127.0.0.1 at 2017-01-26 23:31:53 +0530
+Processing by LinksController#index as HTML
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `common' for Api:Module):
+  
+app/controllers/links_controller.rb:8:in `api_common'
+app/controllers/links_controller.rb:12:in `index'
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.0ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (32.0ms)
+Started GET "/" for 127.0.0.1 at 2017-01-26 23:33:32 +0530
+Processing by LinksController#index as HTML
+Completed 500 Internal Server Error in 803ms (ActiveRecord: 0.0ms)
+
+
+  
+EOFError (end of file reached):
+  
+
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (0.9ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (28.2ms)
+Started GET "/" for 127.0.0.1 at 2017-01-26 23:36:36 +0530
+Processing by LinksController#index as HTML
+Completed 500 Internal Server Error in 753ms (ActiveRecord: 0.0ms)
+
+
+  
+EOFError (end of file reached):
+  
+
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (1.0ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (27.8ms)
+Started GET "/" for 127.0.0.1 at 2017-01-26 23:37:07 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by LinksController#index as HTML
+Completed 500 Internal Server Error in 374ms (ActiveRecord: 0.0ms)
+
+
+  
+IOError (use_ssl value changed, but session already started):
+  
+app/models/api/common.rb:8:in `block in get_video'
+app/models/api/common.rb:7:in `get_video'
+app/controllers/links_controller.rb:12:in `index'
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (7.5ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.0ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (46.5ms)
+Started GET "/" for 127.0.0.1 at 2017-01-26 23:37:57 +0530
+Processing by LinksController#index as HTML
+Completed 500 Internal Server Error in 182ms (ActiveRecord: 0.0ms)
+
+
+  
+IOError (use_ssl value changed, but session already started):
+  
+app/models/api/common.rb:8:in `block in get_video'
+app/models/api/common.rb:7:in `get_video'
+app/controllers/links_controller.rb:12:in `index'
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.3ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (31.9ms)
+Started GET "/" for 127.0.0.1 at 2017-01-26 23:38:28 +0530
+Processing by LinksController#index as HTML
+Completed 500 Internal Server Error in 530ms (ActiveRecord: 0.0ms)
+
+
+  
+EOFError (end of file reached):
+  
+
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (1.1ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (27.2ms)
+Started GET "/" for 127.0.0.1 at 2017-01-28 15:17:10 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by LinksController#index as HTML
+Started GET "/" for 127.0.0.1 at 2017-01-28 15:17:12 +0530
+Processing by LinksController#index as HTML
+  Rendering links/index.html.erb within layouts/application
+  [1m[36mLink Load (0.3ms)[0m  [1m[34mSELECT "links".* FROM "links"[0m
+  Rendered links/index.html.erb within layouts/application (53.2ms)
+Completed 200 OK in 6696ms (Views: 621.8ms | ActiveRecord: 1.3ms)
+
+
+  Rendering links/index.html.erb within layouts/application
+  [1m[36mLink Load (0.7ms)[0m  [1m[34mSELECT "links".* FROM "links"[0m
+  Rendered links/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 15929ms (Views: 38.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-01-28 15:19:20 +0530
+Processing by LinksController#index as HTML
+Completed 500 Internal Server Error in 4714ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `items' for #<HTTParty::Response:0x000000027b25f8>):
+  
+app/controllers/links_controller.rb:15:in `index'
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (10.2ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.6ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (48.7ms)
+Started GET "/" for 127.0.0.1 at 2017-01-28 15:20:10 +0530
+Processing by LinksController#index as HTML
+  Rendering links/index.html.erb within layouts/application
+  [1m[36mLink Load (0.5ms)[0m  [1m[34mSELECT "links".* FROM "links"[0m
+  Rendered links/index.html.erb within layouts/application (14.7ms)
+Completed 200 OK in 1729ms (Views: 53.3ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-01-28 15:20:18 +0530
+Processing by LinksController#index as HTML
+  Rendering links/index.html.erb within layouts/application
+  [1m[36mLink Load (0.4ms)[0m  [1m[34mSELECT "links".* FROM "links"[0m
+  Rendered links/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 7099ms (Views: 34.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-01-28 15:21:48 +0530
+Processing by LinksController#index as HTML
+  Rendering links/index.html.erb within layouts/application
+  [1m[36mLink Load (0.7ms)[0m  [1m[34mSELECT "links".* FROM "links"[0m
+  Rendered links/index.html.erb within layouts/application (16.2ms)
+Completed 200 OK in 6058ms (Views: 44.9ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-01-28 15:25:52 +0530
+Processing by LinksController#index as HTML
+  Rendering links/index.html.erb within layouts/application
+  [1m[36mLink Load (0.4ms)[0m  [1m[34mSELECT "links".* FROM "links"[0m
+  Rendered links/index.html.erb within layouts/application (12.2ms)
+Completed 200 OK in 5896ms (Views: 40.3ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-01-28 15:38:58 +0530
+Processing by LinksController#index as HTML
+  Rendering links/index.html.erb within layouts/application
+  [1m[36mLink Load (0.7ms)[0m  [1m[34mSELECT "links".* FROM "links"[0m
+  Rendered links/index.html.erb within layouts/application (14.6ms)
+Completed 200 OK in 2006ms (Views: 42.8ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-01-28 15:39:59 +0530
+Processing by LinksController#index as HTML
+Completed 500 Internal Server Error in 1004ms (ActiveRecord: 0.0ms)
+
+
+  
+TypeError (no implicit conversion of HTTParty::Response into String):
+  
+app/controllers/links_controller.rb:19:in `index'
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.1ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (32.2ms)
+Started GET "/" for 127.0.0.1 at 2017-01-28 15:43:46 +0530
+Processing by LinksController#index as HTML
+Completed 500 Internal Server Error in 776ms (ActiveRecord: 0.0ms)
+
+
+  
+TypeError (no implicit conversion of nil into String):
+  
+app/controllers/links_controller.rb:19:in `index'
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.7ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (33.4ms)
+Started GET "/" for 127.0.0.1 at 2017-01-28 15:44:18 +0530
+Processing by LinksController#index as HTML
+Completed 500 Internal Server Error in 1037ms (ActiveRecord: 0.0ms)
+
+
+  
+TypeError (no implicit conversion of nil into String):
+  
+app/controllers/links_controller.rb:19:in `index'
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.2ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (31.8ms)
+Started GET "/" for 127.0.0.1 at 2017-01-28 15:44:37 +0530
+Processing by LinksController#index as HTML
+Completed 500 Internal Server Error in 701ms (ActiveRecord: 0.0ms)
+
+
+  
+TypeError (no implicit conversion of HTTParty::Response into String):
+  
+app/controllers/links_controller.rb:19:in `index'
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.5ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (32.8ms)
+Started GET "/" for 127.0.0.1 at 2017-01-28 15:45:01 +0530
+Processing by LinksController#index as HTML
+  Rendering links/index.html.erb within layouts/application
+  [1m[36mLink Load (0.4ms)[0m  [1m[34mSELECT "links".* FROM "links"[0m
+  Rendered links/index.html.erb within layouts/application (14.2ms)
+Completed 200 OK in 1289ms (Views: 109.4ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-01-28 15:51:42 +0530
+Processing by LinksController#index as HTML
+  Rendering links/index.html.erb within layouts/application
+  [1m[36mLink Load (0.7ms)[0m  [1m[34mSELECT "links".* FROM "links"[0m
+  Rendered links/index.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 1067ms (Views: 33.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-01-28 15:52:38 +0530
+Processing by LinksController#index as HTML
+  Rendering links/index.html.erb within layouts/application
+  [1m[36mLink Load (0.4ms)[0m  [1m[34mSELECT "links".* FROM "links"[0m
+  Rendered links/index.html.erb within layouts/application (5.2ms)
+Completed 500 Internal Server Error in 6006ms (ActiveRecord: 0.4ms)
+
+
+  
+ActionView::Template::Error (no implicit conversion of String into Integer):
+    30: 
+    31: <%= link_to 'New Link', new_link_path %>
+    32: 
+    33: <div><%= @response["items"]["statistics"].to_json %></div>
+  
+app/views/links/index.html.erb:33:in `[]'
+app/views/links/index.html.erb:33:in `_app_views_links_index_html_erb__1659691520106382016_69838350516540'
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (7.7ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.8ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (36.6ms)
+Started GET "/" for 127.0.0.1 at 2017-01-28 15:53:06 +0530
+Processing by LinksController#index as HTML
+  Rendering links/index.html.erb within layouts/application
+  [1m[36mLink Load (0.3ms)[0m  [1m[34mSELECT "links".* FROM "links"[0m
+  Rendered links/index.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 954ms (Views: 34.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-01-28 15:55:16 +0530
+Processing by LinksController#index as HTML
+  Rendering links/index.html.erb within layouts/application
+  [1m[36mLink Load (0.4ms)[0m  [1m[34mSELECT "links".* FROM "links"[0m
+  Rendered links/index.html.erb within layouts/application (9.2ms)
+Completed 500 Internal Server Error in 2183ms (ActiveRecord: 0.4ms)
+
+
+  
+ActionView::Template::Error (undefined method `contentDetails' for #<Array:0x007f08f02fca88>):
+    30: 
+    31: <%= link_to 'New Link', new_link_path %>
+    32: 
+    33: <div><%= @response["items"].contentDetails %></div>
+  
+app/views/links/index.html.erb:33:in `_app_views_links_index_html_erb__1659691520106382016_69838183061460'
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (7.4ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.1ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (35.6ms)
+Started GET "/" for 127.0.0.1 at 2017-01-28 15:55:47 +0530
+Processing by LinksController#index as HTML
+  Rendering links/index.html.erb within layouts/application
+  [1m[36mLink Load (0.3ms)[0m  [1m[34mSELECT "links".* FROM "links"[0m
+  Rendered links/index.html.erb within layouts/application (6.7ms)
+Completed 500 Internal Server Error in 6034ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (no implicit conversion of String into Integer):
+    30: 
+    31: <%= link_to 'New Link', new_link_path %>
+    32: 
+    33: <div><%= @response["items"]["contentDetails"] %></div>
+  
+app/views/links/index.html.erb:33:in `[]'
+app/views/links/index.html.erb:33:in `_app_views_links_index_html_erb__1659691520106382016_69838291455600'
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (7.2ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.2ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (34.8ms)
+Started GET "/" for 127.0.0.1 at 2017-01-28 15:56:24 +0530
+Processing by LinksController#index as HTML
+  Rendering links/index.html.erb within layouts/application
+  [1m[36mLink Load (0.4ms)[0m  [1m[34mSELECT "links".* FROM "links"[0m
+  Rendered links/index.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 1721ms (Views: 34.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-01-28 15:57:40 +0530
+Processing by LinksController#index as HTML
+  Rendering links/index.html.erb within layouts/application
+  [1m[36mLink Load (0.3ms)[0m  [1m[34mSELECT "links".* FROM "links"[0m
+  Rendered links/index.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 886ms (Views: 35.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-01-28 16:04:40 +0530
+Processing by LinksController#index as HTML
+  Rendering links/index.html.erb within layouts/application
+  [1m[36mLink Load (0.2ms)[0m  [1m[34mSELECT "links".* FROM "links"[0m
+  Rendered links/index.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 1394ms (Views: 33.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-01-28 16:05:56 +0530
+Processing by LinksController#index as HTML
+  Rendering links/index.html.erb within layouts/application
+  [1m[36mLink Load (0.4ms)[0m  [1m[34mSELECT "links".* FROM "links"[0m
+  Rendered links/index.html.erb within layouts/application (12.7ms)
+Completed 200 OK in 5974ms (Views: 40.7ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-01-28 16:06:36 +0530
+Processing by LinksController#index as HTML
+Completed 500 Internal Server Error in 1340ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `statistics' for #<Array:0x007f0904044778>):
+  
+app/controllers/links_controller.rb:18:in `index'
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.3ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.5ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (36.0ms)
+Started GET "/" for 127.0.0.1 at 2017-01-28 16:07:01 +0530
+Processing by LinksController#index as HTML
+Completed 500 Internal Server Error in 1201ms (ActiveRecord: 0.0ms)
+
+
+  
+TypeError (no implicit conversion of String into Integer):
+  
+app/controllers/links_controller.rb:18:in `[]'
+app/controllers/links_controller.rb:18:in `index'
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.4ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (32.4ms)
+Started GET "/" for 127.0.0.1 at 2017-01-28 16:07:30 +0530
+Processing by LinksController#index as HTML
+  Rendering links/index.html.erb within layouts/application
+  [1m[36mLink Load (0.6ms)[0m  [1m[34mSELECT "links".* FROM "links"[0m
+  Rendered links/index.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 1180ms (Views: 41.1ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-01-28 16:08:15 +0530
+Processing by LinksController#index as HTML
+  Rendering links/index.html.erb within layouts/application
+  [1m[36mLink Load (0.6ms)[0m  [1m[34mSELECT "links".* FROM "links"[0m
+  Rendered links/index.html.erb within layouts/application (15.0ms)
+Completed 200 OK in 978ms (Views: 44.6ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-01-28 16:09:02 +0530
+Processing by LinksController#index as HTML
+Completed 500 Internal Server Error in 1140ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `statistics' for #<Hash:0x000000024b7268>):
+  
+app/controllers/links_controller.rb:18:in `index'
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.0ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (32.0ms)
+Started GET "/" for 127.0.0.1 at 2017-01-28 16:09:42 +0530
+Processing by LinksController#index as HTML
+  Rendering links/index.html.erb within layouts/application
+  [1m[36mLink Load (0.4ms)[0m  [1m[34mSELECT "links".* FROM "links"[0m
+  Rendered links/index.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 816ms (Views: 40.5ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-01-28 16:10:28 +0530
+Processing by LinksController#index as HTML
+  Rendering links/index.html.erb within layouts/application
+  [1m[36mLink Load (0.6ms)[0m  [1m[34mSELECT "links".* FROM "links"[0m
+  Rendered links/index.html.erb within layouts/application (13.8ms)
+Completed 200 OK in 738ms (Views: 42.8ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-01-28 16:10:52 +0530
+Processing by LinksController#index as HTML
+  Rendering links/index.html.erb within layouts/application
+  [1m[36mLink Load (0.6ms)[0m  [1m[34mSELECT "links".* FROM "links"[0m
+  Rendered links/index.html.erb within layouts/application (14.6ms)
+Completed 200 OK in 1080ms (Views: 41.8ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-01-28 22:42:03 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  
+ActionController::RoutingError (undefined method `after_create' for LinksController:Class
+Did you mean?  after_filter):
+  
+app/controllers/links_controller.rb:4:in `<class:LinksController>'
+app/controllers/links_controller.rb:1:in `<top (required)>'
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.1ms)
+  Rendered collection of /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [9 times] (32.4ms)
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (29.0ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (29.7ms)
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (153.2ms)
+Started GET "/" for 127.0.0.1 at 2017-01-28 22:52:01 +0530
+Processing by LinksController#index as HTML
+  Rendering links/index.html.erb within layouts/application
+  [1m[36mLink Load (0.5ms)[0m  [1m[34mSELECT "links".* FROM "links"[0m
+  Rendered links/index.html.erb within layouts/application (17.8ms)
+Completed 500 Internal Server Error in 56ms (ActiveRecord: 1.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `[]' for nil:NilClass):
+    30: 
+    31: <%= link_to 'New Link', new_link_path %>
+    32: 
+    33: <div><%= @response["items"].to_json %></div>
+  
+app/views/links/index.html.erb:33:in `_app_views_links_index_html_erb__3920608071781575627_28531580'
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (7.1ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (5.2ms)
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (51.1ms)
+Started GET "/" for 127.0.0.1 at 2017-01-28 22:52:44 +0530
+Processing by LinksController#index as HTML
+  Rendering links/index.html.erb within layouts/application
+  [1m[36mLink Load (0.3ms)[0m  [1m[34mSELECT "links".* FROM "links"[0m
+  Rendered links/index.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 420ms (Views: 418.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/links/new" for 127.0.0.1 at 2017-01-28 22:52:50 +0530
+Processing by LinksController#new as HTML
+  Rendering links/new.html.erb within layouts/application
+  Rendered links/_form.html.erb (85.4ms)
+  Rendered links/new.html.erb within layouts/application (87.9ms)
+Completed 200 OK in 139ms (Views: 115.1ms | ActiveRecord: 0.0ms)
+
+
+  [1m[36mLink Load (0.3ms)[0m  [1m[34mSELECT  "links".* FROM "links" ORDER BY "links"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+Started GET "/links" for 127.0.0.1 at 2017-01-28 23:04:36 +0530
+Processing by LinksController#index as HTML
+  Rendering links/index.html.erb within layouts/application
+  [1m[36mLink Load (0.4ms)[0m  [1m[34mSELECT "links".* FROM "links"[0m
+  Rendered links/index.html.erb within layouts/application (14.4ms)
+Completed 200 OK in 53ms (Views: 45.3ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/links" for 127.0.0.1 at 2017-01-28 23:04:39 +0530
+Processing by LinksController#index as HTML
+  Rendering links/index.html.erb within layouts/application
+  [1m[36mLink Load (0.4ms)[0m  [1m[34mSELECT "links".* FROM "links"[0m
+  Rendered links/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 52ms (Views: 49.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/links/1/edit" for 127.0.0.1 at 2017-01-28 23:04:52 +0530
+Processing by LinksController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mLink Load (0.5ms)[0m  [1m[34mSELECT  "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering links/edit.html.erb within layouts/application
+  Rendered links/_form.html.erb (6.9ms)
+  Rendered links/edit.html.erb within layouts/application (9.2ms)
+Completed 200 OK in 116ms (Views: 65.3ms | ActiveRecord: 0.5ms)
+
+
+Started PATCH "/links/1" for 127.0.0.1 at 2017-01-28 23:05:57 +0530
+Processing by LinksController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"eyIEwMFe3aQf3amQZOafrHWJALeWfuaBYhEjdUN34MULsEx+wCitcO2wsuIlIHMQhR2yXoigVQ3lPNi+U3sPHw==", "link"=>{"link_text"=>"https://www.youtube.com/watch?v=UmQvqWtDbMc", "ranking"=>"", "videoid"=>""}, "commit"=>"Update Link", "id"=>"1"}
+  [1m[36mLink Load (0.4ms)[0m  [1m[34mSELECT  "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mLink Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "links" WHERE LOWER("links"."link_text") = LOWER(?) AND ("links"."id" != ?) LIMIT ?[0m  [["link_text", "https://www.youtube.com/watch?v=UmQvqWtDbMc"], ["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.4ms)[0m  [1m[33mUPDATE "links" SET "link_text" = ?, "updated_at" = ? WHERE "links"."id" = ?[0m  [["link_text", "https://www.youtube.com/watch?v=UmQvqWtDbMc"], ["updated_at", 2017-01-28 17:35:57 UTC], ["id", 1]]
+  [1m[35m (2.8ms)[0m  [1m[31mrollback transaction[0m
+Completed 500 Internal Server Error in 1093ms (ActiveRecord: 5.0ms)
+
+
+  
+ArgumentError (wrong number of arguments (given 0, expected 1)):
+  
+app/models/link.rb:11:in `save_video_viewcount'
+app/controllers/links_controller.rb:51:in `block in update'
+app/controllers/links_controller.rb:50:in `update'
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (7.1ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.4ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.6ms)
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (37.9ms)
+Started GET "/links/1/edit" for 127.0.0.1 at 2017-01-28 23:08:00 +0530
+Processing by LinksController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mLink Load (0.3ms)[0m  [1m[34mSELECT  "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering links/edit.html.erb within layouts/application
+  Rendered links/_form.html.erb (16.0ms)
+  Rendered links/edit.html.erb within layouts/application (18.3ms)
+Completed 200 OK in 110ms (Views: 72.2ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/links/1/edit" for 127.0.0.1 at 2017-01-28 23:10:21 +0530
+Processing by LinksController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mLink Load (0.3ms)[0m  [1m[34mSELECT  "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering links/edit.html.erb within layouts/application
+  Rendered links/_form.html.erb (4.6ms)
+  Rendered links/edit.html.erb within layouts/application (6.6ms)
+Completed 200 OK in 52ms (Views: 35.7ms | ActiveRecord: 1.2ms)
+
+
+Started PATCH "/links/1" for 127.0.0.1 at 2017-01-28 23:10:38 +0530
+Processing by LinksController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SzpxVztWDd124Jd7kUFxAFX5CNNCmChZmKmpj53pholEEJBqH1KqG43jUtnFfYu6OLHRuquHbLzq9L6HUZ02pQ==", "link"=>{"link_text"=>"https://www.youtube.com/watch?v=UmQvqWtDbMc", "ranking"=>"", "videoid"=>""}, "commit"=>"Update Link", "id"=>"1"}
+  [1m[36mLink Load (0.2ms)[0m  [1m[34mSELECT  "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mLink Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "links" WHERE LOWER("links"."link_text") = LOWER(?) AND ("links"."id" != ?) LIMIT ?[0m  [["link_text", "https://www.youtube.com/watch?v=UmQvqWtDbMc"], ["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.0ms)[0m  [1m[33mUPDATE "links" SET "link_text" = ?, "updated_at" = ? WHERE "links"."id" = ?[0m  [["link_text", "https://www.youtube.com/watch?v=UmQvqWtDbMc"], ["updated_at", 2017-01-28 17:40:38 UTC], ["id", 1]]
+  [1m[35m (213.5ms)[0m  [1m[36mcommit transaction[0m
+Completed 500 Internal Server Error in 231ms (ActiveRecord: 215.1ms)
+
+
+  
+NoMethodError (undefined method `match' for nil:NilClass
+Did you mean?  catch):
+  
+app/controllers/links_controller.rb:96:in `parse_youtube'
+app/controllers/links_controller.rb:86:in `save_video_viewcount'
+app/controllers/links_controller.rb:52:in `block in update'
+app/controllers/links_controller.rb:50:in `update'
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (8.9ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.1ms)
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (36.9ms)
+Started GET "/links/1" for 127.0.0.1 at 2017-01-28 23:20:56 +0530
+Processing by LinksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mLink Load (0.4ms)[0m  [1m[34mSELECT  "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering links/show.html.erb within layouts/application
+  Rendered links/show.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 71ms (Views: 42.1ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/links" for 127.0.0.1 at 2017-01-28 23:21:10 +0530
+Processing by LinksController#index as HTML
+  Rendering links/index.html.erb within layouts/application
+  [1m[36mLink Load (0.6ms)[0m  [1m[34mSELECT "links".* FROM "links"[0m
+  Rendered links/index.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 47ms (Views: 45.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/links/1/edit" for 127.0.0.1 at 2017-01-28 23:21:14 +0530
+Processing by LinksController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mLink Load (0.5ms)[0m  [1m[34mSELECT  "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering links/edit.html.erb within layouts/application
+  Rendered links/_form.html.erb (5.7ms)
+  Rendered links/edit.html.erb within layouts/application (8.3ms)
+Completed 200 OK in 56ms (Views: 51.9ms | ActiveRecord: 0.5ms)
+
+
+Started PATCH "/links/1" for 127.0.0.1 at 2017-01-28 23:22:05 +0530
+Processing by LinksController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"pVtETTaS0oxjwEEcX6Go9J1akf6zYFeHK6L0qGk/3TjVyQzzN+SiWJGtWm4eZ0RIbc4jF62+5Ausjw9jeTMy4g==", "link"=>{"link_text"=>"https://www.youtube.com/watch?v=0krawO0kMwQ", "ranking"=>"", "videoid"=>""}, "commit"=>"Update Link", "id"=>"1"}
+  [1m[36mLink Load (0.2ms)[0m  [1m[34mSELECT  "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mLink Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "links" WHERE LOWER("links"."link_text") = LOWER(?) AND ("links"."id" != ?) LIMIT ?[0m  [["link_text", "https://www.youtube.com/watch?v=0krawO0kMwQ"], ["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (2.7ms)[0m  [1m[33mUPDATE "links" SET "link_text" = ?, "updated_at" = ? WHERE "links"."id" = ?[0m  [["link_text", "https://www.youtube.com/watch?v=0krawO0kMwQ"], ["updated_at", 2017-01-28 17:52:05 UTC], ["id", 1]]
+  [1m[35m (231.3ms)[0m  [1m[36mcommit transaction[0m
+Completed 500 Internal Server Error in 272ms (ActiveRecord: 234.5ms)
+
+
+  
+NoMethodError (undefined method `match' for nil:NilClass
+Did you mean?  catch):
+  
+app/controllers/links_controller.rb:98:in `parse_youtube'
+app/controllers/links_controller.rb:87:in `save_video_viewcount'
+app/controllers/links_controller.rb:52:in `block in update'
+app/controllers/links_controller.rb:50:in `update'
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (7.2ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.9ms)
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (36.6ms)
+Started PATCH "/links/1" for 127.0.0.1 at 2017-01-28 23:23:11 +0530
+Processing by LinksController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"pVtETTaS0oxjwEEcX6Go9J1akf6zYFeHK6L0qGk/3TjVyQzzN+SiWJGtWm4eZ0RIbc4jF62+5Ausjw9jeTMy4g==", "link"=>{"link_text"=>"https://www.youtube.com/watch?v=0krawO0kMwQ", "ranking"=>"", "videoid"=>""}, "commit"=>"Update Link", "id"=>"1"}
+  [1m[36mLink Load (0.3ms)[0m  [1m[34mSELECT  "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mLink Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "links" WHERE LOWER("links"."link_text") = LOWER(?) AND ("links"."id" != ?) LIMIT ?[0m  [["link_text", "https://www.youtube.com/watch?v=0krawO0kMwQ"], ["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 1.8ms)
+
+
+  
+NoMethodError (undefined method `match' for nil:NilClass
+Did you mean?  catch):
+  
+app/controllers/links_controller.rb:98:in `parse_youtube'
+app/controllers/links_controller.rb:87:in `save_video_viewcount'
+app/controllers/links_controller.rb:52:in `block in update'
+app/controllers/links_controller.rb:50:in `update'
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.1ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (13.7ms)
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (45.1ms)
+Started GET "/links/1/edit" for 127.0.0.1 at 2017-01-28 23:23:20 +0530
+Processing by LinksController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mLink Load (0.4ms)[0m  [1m[34mSELECT  "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering links/edit.html.erb within layouts/application
+  Rendered links/_form.html.erb (7.4ms)
+  Rendered links/edit.html.erb within layouts/application (9.5ms)
+Completed 200 OK in 43ms (Views: 39.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/links/1/edit" for 127.0.0.1 at 2017-01-28 23:24:29 +0530
+Processing by LinksController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mLink Load (0.4ms)[0m  [1m[34mSELECT  "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering links/edit.html.erb within layouts/application
+  Rendered links/_form.html.erb (5.0ms)
+  Rendered links/edit.html.erb within layouts/application (7.3ms)
+Completed 200 OK in 59ms (Views: 55.1ms | ActiveRecord: 0.4ms)
+
+
+Started PATCH "/links/1" for 127.0.0.1 at 2017-01-28 23:24:45 +0530
+Processing by LinksController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"4thXZNmaCIkRJNp6XpQ0qf7g4ZDoHkhyVYfXGXZa8VDt8rZZ/Z6vT+onH9gKqM4Tk6g4+QEBDJcn2sARui5BfA==", "link"=>{"link_text"=>"https://www.youtube.com/watch?v=nUIEglUgS9A", "ranking"=>"", "videoid"=>""}, "commit"=>"Update Link", "id"=>"1"}
+  [1m[36mLink Load (0.3ms)[0m  [1m[34mSELECT  "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mLink Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "links" WHERE LOWER("links"."link_text") = LOWER(?) AND ("links"."id" != ?) LIMIT ?[0m  [["link_text", "https://www.youtube.com/watch?v=nUIEglUgS9A"], ["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.5ms)[0m  [1m[33mUPDATE "links" SET "link_text" = ?, "updated_at" = ? WHERE "links"."id" = ?[0m  [["link_text", "https://www.youtube.com/watch?v=nUIEglUgS9A"], ["updated_at", 2017-01-28 17:54:45 UTC], ["id", 1]]
+  [1m[35m (253.8ms)[0m  [1m[36mcommit transaction[0m
+Completed 500 Internal Server Error in 266ms (ActiveRecord: 256.1ms)
+
+
+  
+NoMethodError (undefined method `match' for nil:NilClass
+Did you mean?  catch):
+  
+app/controllers/links_controller.rb:98:in `parse_youtube'
+app/controllers/links_controller.rb:87:in `save_video_viewcount'
+app/controllers/links_controller.rb:52:in `block in update'
+app/controllers/links_controller.rb:50:in `update'
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.8ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (34.4ms)
+Started GET "/links/1" for 127.0.0.1 at 2017-01-28 23:27:01 +0530
+Processing by LinksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mLink Load (0.3ms)[0m  [1m[34mSELECT  "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering links/show.html.erb within layouts/application
+  Rendered links/show.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 163ms (Views: 145.9ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/links/1/edit" for 127.0.0.1 at 2017-01-28 23:27:07 +0530
+Processing by LinksController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mLink Load (0.2ms)[0m  [1m[34mSELECT  "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering links/edit.html.erb within layouts/application
+  Rendered links/_form.html.erb (7.4ms)
+  Rendered links/edit.html.erb within layouts/application (9.8ms)
+Completed 200 OK in 45ms (Views: 41.2ms | ActiveRecord: 0.2ms)
+
+
+Started PATCH "/links/1" for 127.0.0.1 at 2017-01-28 23:27:32 +0530
+Processing by LinksController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"zsV2APlbnaQz5jzJpnnKKSrXVVJtg3Zr8On/I6LiWri+Vz6++C3tcMGLJ7vnvyaV2kPnu3Ndxed3xATosu61Yg==", "link"=>{"link_text"=>"https://www.youtube.com/watch?v=dYVH0PCjioQ", "ranking"=>"", "videoid"=>""}, "commit"=>"Update Link", "id"=>"1"}
+  [1m[36mLink Load (0.2ms)[0m  [1m[34mSELECT  "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mLink Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "links" WHERE LOWER("links"."link_text") = LOWER(?) AND ("links"."id" != ?) LIMIT ?[0m  [["link_text", "https://www.youtube.com/watch?v=dYVH0PCjioQ"], ["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "links" SET "link_text" = ?, "updated_at" = ? WHERE "links"."id" = ?[0m  [["link_text", "https://www.youtube.com/watch?v=dYVH0PCjioQ"], ["updated_at", 2017-01-28 17:57:32 UTC], ["id", 1]]
+  [1m[35m (257.0ms)[0m  [1m[36mcommit transaction[0m
+Completed 500 Internal Server Error in 283ms (ActiveRecord: 258.0ms)
+
+
+  
+NoMethodError (undefined method `match' for nil:NilClass
+Did you mean?  catch):
+  
+app/controllers/links_controller.rb:98:in `parse_youtube'
+app/controllers/links_controller.rb:87:in `save_video_viewcount'
+app/controllers/links_controller.rb:52:in `block in update'
+app/controllers/links_controller.rb:50:in `update'
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.8ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.8ms)
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (33.7ms)
+Started GET "/links/1/edit" for 127.0.0.1 at 2017-01-28 23:29:15 +0530
+Processing by LinksController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mLink Load (0.4ms)[0m  [1m[34mSELECT  "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering links/edit.html.erb within layouts/application
+  Rendered links/_form.html.erb (4.8ms)
+  Rendered links/edit.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 56ms (Views: 37.1ms | ActiveRecord: 1.3ms)
+
+
+Started PATCH "/links/1" for 127.0.0.1 at 2017-01-28 23:29:35 +0530
+Processing by LinksController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7BACBgnjoeW5JyjrT6tv9BIUcxDLmlgHLOzekKRUrFfjOuM7LecGI0Ik7Ukbl5VOf1yqeSKFHOJescmYaCAcew==", "link"=>{"link_text"=>"https://www.youtube.com/watch?v=dYVH0PCjioQ", "ranking"=>"1", "videoid"=>""}, "commit"=>"Update Link", "id"=>"1"}
+  [1m[36mLink Load (0.2ms)[0m  [1m[34mSELECT  "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mLink Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "links" WHERE LOWER("links"."link_text") = LOWER(?) AND ("links"."id" != ?) LIMIT ?[0m  [["link_text", "https://www.youtube.com/watch?v=dYVH0PCjioQ"], ["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (2.5ms)[0m  [1m[33mUPDATE "links" SET "ranking" = ?, "updated_at" = ? WHERE "links"."id" = ?[0m  [["ranking", "1"], ["updated_at", 2017-01-28 17:59:35 UTC], ["id", 1]]
+  [1m[35m (246.8ms)[0m  [1m[36mcommit transaction[0m
+Completed 500 Internal Server Error in 267ms (ActiveRecord: 249.9ms)
+
+
+  
+URI::InvalidURIError (bad URI(is not URI?): https://www.googleapis.com/youtube/v3/videos?part=contentDetails,statistics&id=#{id}&key=AIzaSyBeMC4eMb_u-IqGeYRSpAzED8m5RcjTumg):
+  
+app/controllers/links_controller.rb:89:in `save_video_viewcount'
+app/controllers/links_controller.rb:52:in `block in update'
+app/controllers/links_controller.rb:50:in `update'
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.7ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.1ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.2ms)
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (35.1ms)
+Started GET "/links/1/edit" for 127.0.0.1 at 2017-01-28 23:31:05 +0530
+Processing by LinksController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mLink Load (0.3ms)[0m  [1m[34mSELECT  "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering links/edit.html.erb within layouts/application
+  Rendered links/_form.html.erb (8.2ms)
+  Rendered links/edit.html.erb within layouts/application (12.5ms)
+Completed 200 OK in 96ms (Views: 58.8ms | ActiveRecord: 1.8ms)
+
+
+Started PATCH "/links/1" for 127.0.0.1 at 2017-01-28 23:31:21 +0530
+Processing by LinksController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Jxic6224G9vK/VMBd3dnBl6emF5aPzZfvmsE2aF8oNooMn3WSby8HTH+lqMjS528M9ZBN7MgcrrMNhPRbQgQ9g==", "link"=>{"link_text"=>"https://www.youtube.com/watch?v=dYVH0PCjioQ", "ranking"=>"2", "videoid"=>""}, "commit"=>"Update Link", "id"=>"1"}
+  [1m[36mLink Load (0.2ms)[0m  [1m[34mSELECT  "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mLink Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "links" WHERE LOWER("links"."link_text") = LOWER(?) AND ("links"."id" != ?) LIMIT ?[0m  [["link_text", "https://www.youtube.com/watch?v=dYVH0PCjioQ"], ["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.3ms)[0m  [1m[33mUPDATE "links" SET "ranking" = ?, "updated_at" = ? WHERE "links"."id" = ?[0m  [["ranking", "2"], ["updated_at", 2017-01-28 18:01:21 UTC], ["id", 1]]
+  [1m[35m (246.8ms)[0m  [1m[36mcommit transaction[0m
+Completed 500 Internal Server Error in 268ms (ActiveRecord: 248.6ms)
+
+
+  
+URI::InvalidURIError (bad URI(is not URI?): https://www.googleapis.com/youtube/v3/videos?part=contentDetails,statistics&id=#{id}&key=AIzaSyBeMC4eMb_u-IqGeYRSpAzED8m5RcjTumg):
+  
+app/controllers/links_controller.rb:90:in `save_video_viewcount'
+app/controllers/links_controller.rb:52:in `block in update'
+app/controllers/links_controller.rb:50:in `update'
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.6ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.5ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.3ms)
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (37.1ms)
+Started GET "/links/1" for 127.0.0.1 at 2017-01-28 23:32:25 +0530
+Processing by LinksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mLink Load (0.3ms)[0m  [1m[34mSELECT  "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering links/show.html.erb within layouts/application
+  Rendered links/show.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 54ms (Views: 37.6ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/links/1/edit" for 127.0.0.1 at 2017-01-28 23:32:30 +0530
+Processing by LinksController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mLink Load (0.2ms)[0m  [1m[34mSELECT  "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering links/edit.html.erb within layouts/application
+  Rendered links/_form.html.erb (8.0ms)
+  Rendered links/edit.html.erb within layouts/application (14.2ms)
+Completed 200 OK in 56ms (Views: 52.9ms | ActiveRecord: 0.2ms)
+
+
+Started PATCH "/links/1" for 127.0.0.1 at 2017-01-28 23:32:45 +0530
+Processing by LinksController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"q3RuSqjmhp0FX3PYvkVlyX+LpB8mdW+fHUFVgtczgkXb5ib0qZD2SfcyaKr/g4l1jx8W9jir3BOabK5Jxz9tnw==", "link"=>{"link_text"=>"https://www.youtube.com/watch?v=dYVH0PCjioQ", "ranking"=>"1", "videoid"=>""}, "commit"=>"Update Link", "id"=>"1"}
+  [1m[36mLink Load (0.3ms)[0m  [1m[34mSELECT  "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mLink Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "links" WHERE LOWER("links"."link_text") = LOWER(?) AND ("links"."id" != ?) LIMIT ?[0m  [["link_text", "https://www.youtube.com/watch?v=dYVH0PCjioQ"], ["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.1ms)[0m  [1m[33mUPDATE "links" SET "ranking" = ?, "updated_at" = ? WHERE "links"."id" = ?[0m  [["ranking", "1"], ["updated_at", 2017-01-28 18:02:45 UTC], ["id", 1]]
+  [1m[35m (174.9ms)[0m  [1m[36mcommit transaction[0m
+Completed 500 Internal Server Error in 199ms (ActiveRecord: 176.7ms)
+
+
+  
+URI::InvalidURIError (bad URI(is not URI?): https://www.googleapis.com/youtube/v3/videos?part=contentDetails,statistics&id=#{id}&key=AIzaSyBeMC4eMb_u-IqGeYRSpAzED8m5RcjTumg):
+  
+app/controllers/links_controller.rb:91:in `save_video_viewcount'
+app/controllers/links_controller.rb:52:in `block in update'
+app/controllers/links_controller.rb:50:in `update'
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.8ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.9ms)
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (33.6ms)
+Started GET "/links/1/edit" for 127.0.0.1 at 2017-01-28 23:34:43 +0530
+Processing by LinksController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mLink Load (0.4ms)[0m  [1m[34mSELECT  "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering links/edit.html.erb within layouts/application
+  Rendered links/_form.html.erb (4.6ms)
+  Rendered links/edit.html.erb within layouts/application (6.7ms)
+Completed 200 OK in 52ms (Views: 35.2ms | ActiveRecord: 1.3ms)
+
+
+Started PATCH "/links/1" for 127.0.0.1 at 2017-01-28 23:34:56 +0530
+Processing by LinksController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Rq1QUyD+z+zuXKvuNbfWPRL/LgK9B0+i8ZoFE0J/ku9Jh7FuBPpoKhVfbkxhiyyHf7f3a1QYC0eDxxIbjgsiww==", "link"=>{"link_text"=>"https://www.youtube.com/watch?v=dYVH0PCjioQ", "ranking"=>"2", "videoid"=>""}, "commit"=>"Update Link", "id"=>"1"}
+  [1m[36mLink Load (0.3ms)[0m  [1m[34mSELECT  "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mLink Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "links" WHERE LOWER("links"."link_text") = LOWER(?) AND ("links"."id" != ?) LIMIT ?[0m  [["link_text", "https://www.youtube.com/watch?v=dYVH0PCjioQ"], ["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (2.3ms)[0m  [1m[33mUPDATE "links" SET "ranking" = ?, "updated_at" = ? WHERE "links"."id" = ?[0m  [["ranking", "2"], ["updated_at", 2017-01-28 18:04:56 UTC], ["id", 1]]
+  [1m[35m (202.6ms)[0m  [1m[36mcommit transaction[0m
+Completed 500 Internal Server Error in 1015ms (ActiveRecord: 205.8ms)
+
+
+  
+ArgumentError (wrong number of arguments (given 0, expected 1)):
+  
+app/controllers/links_controller.rb:94:in `save_video_viewcount'
+app/controllers/links_controller.rb:52:in `block in update'
+app/controllers/links_controller.rb:50:in `update'
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.4ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (32.6ms)
+Started GET "/links/1" for 127.0.0.1 at 2017-01-28 23:36:23 +0530
+Processing by LinksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mLink Load (0.3ms)[0m  [1m[34mSELECT  "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering links/show.html.erb within layouts/application
+  Rendered links/show.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 53ms (Views: 36.8ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/links/1/edit" for 127.0.0.1 at 2017-01-28 23:36:35 +0530
+Processing by LinksController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mLink Load (0.3ms)[0m  [1m[34mSELECT  "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering links/edit.html.erb within layouts/application
+  Rendered links/_form.html.erb (5.3ms)
+  Rendered links/edit.html.erb within layouts/application (12.9ms)
+Completed 200 OK in 111ms (Views: 98.6ms | ActiveRecord: 0.3ms)
+
+
+Started PATCH "/links/1" for 127.0.0.1 at 2017-01-28 23:36:41 +0530
+Processing by LinksController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8vtDF06gPnnEHBVZjf3wPBhIBytgCGSEHbS6ARV09RqCaQupT9ZOrTZxDivMOxyA6Ny1wn7W1wiamUHKBXgawA==", "link"=>{"link_text"=>"https://www.youtube.com/watch?v=dYVH0PCjioQ", "ranking"=>"1", "videoid"=>""}, "commit"=>"Update Link", "id"=>"1"}
+  [1m[36mLink Load (0.2ms)[0m  [1m[34mSELECT  "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mLink Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "links" WHERE LOWER("links"."link_text") = LOWER(?) AND ("links"."id" != ?) LIMIT ?[0m  [["link_text", "https://www.youtube.com/watch?v=dYVH0PCjioQ"], ["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (2.1ms)[0m  [1m[33mUPDATE "links" SET "ranking" = ?, "updated_at" = ? WHERE "links"."id" = ?[0m  [["ranking", "1"], ["updated_at", 2017-01-28 18:06:41 UTC], ["id", 1]]
+  [1m[35m (230.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mLink Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "links" WHERE LOWER("links"."link_text") = LOWER(?) AND ("links"."id" != ?) LIMIT ?[0m  [["link_text", "https://www.youtube.com/watch?v=dYVH0PCjioQ"], ["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.5ms)[0m  [1m[33mUPDATE "links" SET "ranking" = ?, "updated_at" = ? WHERE "links"."id" = ?[0m  [["ranking", "434640"], ["updated_at", 2017-01-28 18:06:42 UTC], ["id", 1]]
+  [1m[35m (161.2ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/links/1
+Completed 302 Found in 1345ms (ActiveRecord: 396.9ms)
+
+
+Started GET "/links/1" for 127.0.0.1 at 2017-01-28 23:36:42 +0530
+Processing by LinksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mLink Load (0.2ms)[0m  [1m[34mSELECT  "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering links/show.html.erb within layouts/application
+  Rendered links/show.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 45ms (Views: 41.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/links" for 127.0.0.1 at 2017-01-28 23:38:46 +0530
+Processing by LinksController#index as HTML
+  Rendering links/index.html.erb within layouts/application
+  [1m[36mLink Load (0.5ms)[0m  [1m[34mSELECT "links".* FROM "links"[0m
+  Rendered links/index.html.erb within layouts/application (12.2ms)
+Completed 200 OK in 51ms (Views: 45.1ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/links/new" for 127.0.0.1 at 2017-01-28 23:38:48 +0530
+Processing by LinksController#new as HTML
+  Rendering links/new.html.erb within layouts/application
+  Rendered links/_form.html.erb (5.0ms)
+  Rendered links/new.html.erb within layouts/application (7.6ms)
+Completed 200 OK in 47ms (Views: 43.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/links" for 127.0.0.1 at 2017-01-28 23:39:26 +0530
+Processing by LinksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hpsI3dOGHLhv9LqTX6/4yRBRgutQXJB4UooO7lRIyya2U90lfgsVG+fifrrxlkFrW71Do3/EM3rVMqQX8MhGrA==", "link"=>{"link_text"=>"https://www.youtube.com/watch?v=YHc5SJlrJig", "ranking"=>"", "videoid"=>""}, "commit"=>"Create Link"}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mLink Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "links" WHERE LOWER("links"."link_text") = LOWER(?) LIMIT ?[0m  [["link_text", "https://www.youtube.com/watch?v=YHc5SJlrJig"], ["LIMIT", 1]]
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "links" ("link_text", "ranking", "videoid", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["link_text", "https://www.youtube.com/watch?v=YHc5SJlrJig"], ["ranking", ""], ["videoid", ""], ["created_at", 2017-01-28 18:09:26 UTC], ["updated_at", 2017-01-28 18:09:26 UTC]]
+  [1m[35m (298.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mLink Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "links" WHERE LOWER("links"."link_text") = LOWER(?) AND ("links"."id" != ?) LIMIT ?[0m  [["link_text", "https://www.youtube.com/watch?v=YHc5SJlrJig"], ["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (1.7ms)[0m  [1m[33mUPDATE "links" SET "ranking" = ?, "updated_at" = ? WHERE "links"."id" = ?[0m  [["ranking", "236501"], ["updated_at", 2017-01-28 18:09:27 UTC], ["id", 2]]
+  [1m[35m (380.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/links/2
+Completed 302 Found in 1615ms (ActiveRecord: 682.7ms)
+
+
+Started GET "/links/2" for 127.0.0.1 at 2017-01-28 23:39:27 +0530
+Processing by LinksController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mLink Load (0.3ms)[0m  [1m[34mSELECT  "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering links/show.html.erb within layouts/application
+  Rendered links/show.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 39ms (Views: 36.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/links" for 127.0.0.1 at 2017-01-28 23:39:51 +0530
+Processing by LinksController#index as HTML
+  Rendering links/index.html.erb within layouts/application
+  [1m[36mLink Load (0.3ms)[0m  [1m[34mSELECT "links".* FROM "links"[0m
+  Rendered links/index.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 35ms (Views: 33.3ms | ActiveRecord: 0.3ms)
+
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to RenameColumnNameToViewcount (20170128181240)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (9.7ms)[0m  [1m[35mCREATE TEMPORARY TABLE "alinks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "link_text" varchar, "view_count" varchar, "videoid" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "alinks" ("id","link_text","view_count","videoid","created_at","updated_at")
+                     SELECT "id","link_text","ranking","videoid","created_at","updated_at" FROM "links"[0m
+  [1m[35m (2.1ms)[0m  [1m[35mDROP TABLE "links"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "links" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "link_text" varchar, "view_count" varchar, "videoid" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "links" ("id","link_text","view_count","videoid","created_at","updated_at")
+                     SELECT "id","link_text","view_count","videoid","created_at","updated_at" FROM "alinks"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "alinks"[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170128181240"]]
+  [1m[35m (223.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mLink Load (0.3ms)[0m  [1m[34mSELECT  "links".* FROM "links" ORDER BY "links"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+Started GET "/links" for 127.0.0.1 at 2017-01-28 23:46:13 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by LinksController#index as HTML
+  Rendering links/index.html.erb within layouts/application
+  [1m[36mLink Load (0.3ms)[0m  [1m[34mSELECT "links".* FROM "links"[0m
+  Rendered links/index.html.erb within layouts/application (24.4ms)
+Completed 500 Internal Server Error in 60ms (ActiveRecord: 1.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `ranking' for #<Link:0x00000004a83e38>):
+    16:     <% @links.each do |link| %>
+    17:       <tr>
+    18:         <td><%= link.link_text %></td>
+    19:         <td><%= link.ranking %></td>
+    20:         <td><%= link.videoid %></td>
+    21:         <td><%= link_to 'Show', link %></td>
+    22:         <td><%= link_to 'Edit', edit_link_path(link) %></td>
+  
+app/views/links/index.html.erb:19:in `block in _app_views_links_index_html_erb___1536192673579696493_40294220'
+app/views/links/index.html.erb:16:in `_app_views_links_index_html_erb___1536192673579696493_40294220'
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (7.2ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.4ms)
+  Rendering /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/kiran/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (38.2ms)
+Started GET "/links" for 127.0.0.1 at 2017-01-28 23:47:25 +0530
+Processing by LinksController#index as HTML
+  Rendering links/index.html.erb within layouts/application
+  [1m[36mLink Load (0.5ms)[0m  [1m[34mSELECT "links".* FROM "links"[0m
+  Rendered links/index.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 298ms (Views: 295.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/links" for 127.0.0.1 at 2017-01-28 23:47:43 +0530
+Processing by LinksController#index as HTML
+  Rendering links/index.html.erb within layouts/application
+  [1m[36mLink Load (0.3ms)[0m  [1m[34mSELECT "links".* FROM "links"[0m
+  Rendered links/index.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 43ms (Views: 41.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/links" for 127.0.0.1 at 2017-01-28 23:48:26 +0530
+Processing by LinksController#index as HTML
+  Rendering links/index.html.erb within layouts/application
+  [1m[36mLink Load (0.4ms)[0m  [1m[34mSELECT "links".* FROM "links"[0m
+  Rendered links/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 56ms (Views: 50.0ms | ActiveRecord: 0.4ms)
+
+

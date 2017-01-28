@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Link text:</strong>
+  <%= @link.link_text %>
+</p>
+
+<p>
+  <strong>View Count:</strong>
+  <%= @link.view_count %>
+</p>
+
+<p>
+  <strong>Videoid:</strong>
+  <%= @link.videoid %>
+</p>
+
+<%= link_to 'Edit', edit_link_path(@link) %> |
+<%= link_to 'Back', links_path %>
