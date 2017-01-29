@@ -9,7 +9,8 @@ class LinksController < ApplicationController
     # return Api::Common.new
   end
   def index
-    @links = Link.all
+    # @links = Link.all
+    @links = Link.order(ranking: :desc)
   end
 
   # GET /links/1
@@ -78,14 +79,21 @@ class LinksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def link_params
-      params.require(:link).permit(:link_text, :view_count, :videoid)
+      params.require(:link).permit(:link_text, :view_count, :videoid,:published_at)
     end
 
     def save_video_viewcount(link)
       id = parse_youtube(link.link_text)
-      api = "https://www.googleapis.com/youtube/v3/videos?part=contentDetails,statistics&id=#{id}&key=AIzaSyBeMC4eMb_u-IqGeYRSpAzED8m5RcjTumg"
+      puts "id = #{id}"
+      # api = "https://www.googleapis.com/youtube/v3/videos?part=contentDetails,statistics&id=#{id}&key=AIzaSyBeMC4eMb_u-IqGeYRSpAzED8m5RcjTumg"
+      api = "https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics&id=#{id}&key=AIzaSyBeMC4eMb_u-IqGeYRSpAzED8m5RcjTumg"
       response = HTTParty.get(api.to_s)
-      link.update_attributes(:view_count => response["items"][0]["statistics"]["viewCount"] )
+      link.update_attributes(:view_count => response["items"][0]["statistics"]["viewCount"],:published_at => response["items"][0]["snippet"]["publishedAt"],
+        :ranking => (response["items"][0]["statistics"]["viewCount"].to_i / (Date.today - Date.parse(response["items"][0]["snippet"]["publishedAt"])).to_i ).to_f,
+        :thumbnail => response["items"][0]["snippet"]["thumbnails"]["default"]["url"],
+        :title => response["items"][0]["snippet"]["title"]
+        )
+
     end
 
     def parse_youtube(url)

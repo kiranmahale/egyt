@@ -10,14 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170128181240) do
+ActiveRecord::Schema.define(version: 20170129101845) do
 
   create_table "links", force: :cascade do |t|
     t.string   "link_text"
     t.string   "view_count"
     t.string   "videoid"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "published_at"
+    t.float    "ranking"
+    t.string   "thumbnail"
+    t.string   "title"
   end
 
 end
